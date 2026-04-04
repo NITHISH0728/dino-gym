@@ -260,7 +260,7 @@ document.querySelectorAll('.infra-card, .achiever-card').forEach(card => {
 const aboutImage = document.getElementById('aboutImage');
 if (aboutImage) {
   // Two images to alternate in the About section
-  const images = ['images/img_1.png', 'images/img_2.png'];
+  const images = ['images/hero.png', 'images/img_2.png'];
   let currentImageIndex = 0;
 
   // Set the initial image
