@@ -33,8 +33,8 @@ if (canvas) {
       this.speedX = (Math.random() - 0.5) * 0.2;
       this.opacity = Math.random() * 0.3 + 0.05;
       this.color = Math.random() > 0.6
-        ? 'rgba(203, 169, 93,' + this.opacity + ')'
-        : 'rgba(45, 106, 79,' + this.opacity + ')';
+        ? 'rgba(0, 0, 0,' + this.opacity + ')'
+        : 'rgba(51, 51, 51,' + this.opacity + ')';
     }
     update() {
       this.y += this.speedY;
@@ -194,8 +194,8 @@ if (contactForm) {
     setTimeout(() => {
       btn.textContent = '✓ Message Sent!';
       btn.style.opacity = '1';
-      btn.style.background = 'linear-gradient(135deg, #2D6A4F, #3A8A6A)';
-      btn.style.color = '#F5F0E8';
+      btn.style.background = 'linear-gradient(135deg, #000000, #333333)';
+      btn.style.color = '#FFFFFF';
 
       contactForm.reset();
 

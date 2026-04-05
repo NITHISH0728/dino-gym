@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="DR DINO FITNESS & GYM — Follow our latest workouts, transformations, and updates on Instagram.">
+  <title>Instagram Feed — DR DINO FITNESS & GYM</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦖</text></svg>">
+  <style>
+    /* ===== INSTAGRAM PAGE — PREMIUM STANDALONE ===== */
+
+    .insta-page-body {
+      background: #000000;
+      min-height: 100vh;
+    }
+
+    /* --- Hero Banner --- */
+    .insta-hero {
+      position: relative;
+      padding: 140px 24px 40px;
+      text-align: left;
+      overflow: hidden;
+    }
+
+    /* Ambient glow background */
+    .insta-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(131, 58, 180, 0.15) 0%, rgba(253, 29, 29, 0.08) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .insta-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 70%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Instagram icon */
+    .insta-icon-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      margin-bottom: 28px;
+      box-shadow: 0 8px 40px rgba(131, 58, 180, 0.35);
+      animation: iconPulse 3s ease-in-out infinite;
+    }
+
+    .insta-icon-wrap svg {
+      width: 36px;
+      height: 36px;
+      fill: #ffffff;
+    }
+
+    @keyframes iconPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 8px 40px rgba(131, 58, 180, 0.35);
+      }
+
+      50% {
+        box-shadow: 0 12px 60px rgba(253, 29, 29, 0.45);
+      }
+    }
+
+    /* Breadcrumb / tag */
+    .insta-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .insta-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 20px;
+    }
+
+    .insta-tag .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fd1d1d;
+      animation: dotBlink 2s ease-in-out infinite;
+    }
+
+    @keyframes dotBlink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    .insta-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+      text-align: center;
+    }
+
+    .insta-hero h1 .gradient-text {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .insta-hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.7;
+      max-width: 500px;
+      margin: 0 auto 28px;
+    }
+
+    /* Profile badge */
+    .insta-profile-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 24px 10px 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 60px;
+      text-decoration: none;
+      transition: all 0.35s ease;
+    }
+
+    .insta-profile-badge:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(131, 58, 180, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(131, 58, 180, 0.2);
+    }
+
+    .insta-profile-badge .badge-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .insta-profile-badge .badge-avatar svg {
+      width: 20px;
+      height: 20px;
+      fill: #ffffff;
+    }
+
+    .insta-profile-badge .badge-info {
+      text-align: left;
+    }
+
+    .insta-profile-badge .badge-handle {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: #ffffff;
+    }
+
+    .insta-profile-badge .badge-label {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 0.5px;
+    }
+
+    /* Separator line */
+    .insta-divider {
+      max-width: 200px;
+      height: 2px;
+      margin: 0 auto 0;
+      background: linear-gradient(90deg, transparent, rgba(131, 58, 180, 0.5), rgba(253, 29, 29, 0.5), rgba(252, 176, 69, 0.5), transparent);
+      border: none;
+    }
+
+    /* --- Feed Container --- */
+    .insta-feed-section {
+      padding: 40px 24px 60px;
+    }
+
+    .insta-feed-container {
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .elfsight-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+
+    .insta-feed-container .feed-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .feed-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feed-header-left .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00e676;
+      animation: dotBlink 1.5s ease-in-out infinite;
+    }
+
+    .feed-header-left span {
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .feed-header-right a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.35);
+      text-decoration: none;
+      padding: 8px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+
+    .feed-header-right a:hover {
+      color: #ffffff;
+      border-color: rgba(131, 58, 180, 0.5);
+      background: rgba(131, 58, 180, 0.1);
+    }
+
+    /* --- Back to Home CTA --- */
+    .insta-back-section {
+      text-align: center;
+      padding: 20px 24px 60px;
+    }
+
+    .insta-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 36px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: all 0.35s ease;
+    }
+
+    .insta-back-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.05);
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      .insta-hero {
+        padding: 120px 16px 30px;
+      }
+
+      .insta-feed-container {
+        padding: 16px;
+        border-radius: 16px;
+      }
+
+      .feed-header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+
+      .insta-icon-wrap {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+      }
+
+      .insta-icon-wrap svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body class="insta-page-body">
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">✕</button>
+    <a href="index.html#home" onclick="closeMobile()">Home</a>
+    <a href="index.html#about" onclick="closeMobile()">About</a>
+    <a href="index.html#infrastructure" onclick="closeMobile()">Facilities</a>
+    <a href="gallery.html" onclick="closeMobile()">Gallery</a>
+    <a href="index.html#reviews" onclick="closeMobile()">Reviews</a>
+    <a href="#instagram-feed" onclick="closeMobile()">Instagram</a>
+    <a href="index.html#contact" onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html#home" class="logo">
+      <img src="images/l1.jpeg" alt="DR DINO FITNESS & GYM Logo" class="logo-img">
+      <span class="logo-text">DR <span class="gold">DINO</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#infrastructure">Facilities</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="#instagram-feed" class="active">Instagram</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Join Now</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ===== HERO HEADER ===== -->
+  <section class="insta-hero" id="instagram-feed">
+    <div class="insta-hero-inner">
+      <!-- Instagram Icon -->
+
+
+      <!-- Tag -->
+      <div class="insta-tag">
+        <span class="dot"></span>
+        Live Feed
+      </div>
+
+      <!-- Title -->
+      <h1>Follow Our <span class="gradient-text">Daily Grind</span></h1>
+
+      <!-- Profile Badge -->
+      <a href="https://www.instagram.com/shanmugammanishanmugam/" target="_blank" class="insta-profile-badge">
+        <div class="badge-avatar">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+          </svg>
+        </div>
+        <div class="badge-info">
+          <div class="badge-handle">@shanmugammanishanmugam</div>
+          <div class="badge-label">View on Instagram →</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Gradient Divider -->
+  <hr class="insta-divider">
+
+  <!-- ===== FEED CONTAINER ===== -->
+  <section class="insta-feed-section">
+    <div class="insta-feed-container">
+      <!-- Feed Header Bar -->
+
+      <div class="feed-header-right">
+        <a href="https://www.instagram.com/shanmugammanishanmugam/" target="_blank">Follow Us ↗</a>
+      </div>
+    </div>
+
+    <!-- Elfsight Embed -->
+    <div class="elfsight-wrapper">
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-bf517fae-cc3d-4662-9ef0-95ce5deb973f" data-elfsight-app-lazy></div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Back to Site -->
+  <div class="insta-back-section">
+    <a href="index.html" class="insta-back-btn">
+      ← Back to Home
+    </a>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html#home" class="logo">
+          <span class="logo-text">DR <span class="gold">DINO</span></span>
+        </a>
+        <p>A world-class royal fitness destination where champions are forged. Premium equipment, expert coaches, and a
+          legacy of transformation.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#infrastructure">Facilities</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="#">Weight Training</a></li>
+          <li><a href="#">Bodybuilding</a></li>
+          <li><a href="#">Personal Training</a></li>
+          <li><a href="#">Group Classes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Membership Plans</a></li>
+          <li><a href="#">Free Trial</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 DR DINO FITNESS & GYM. All rights reserved.</span>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/shanmugammanishanmugam/" target="_blank" aria-label="Instagram">📷</a>
+        <a href="#" aria-label="YouTube">▶</a>
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Twitter">𝕏</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
