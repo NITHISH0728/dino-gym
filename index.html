@@ -21,57 +21,65 @@
 
   <!-- ===== SECRET SHIELD ENTRANCE ===== -->
   <div id="secret-shield" class="secret-shield" title="Authorized Personnel Only">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-      </svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+    </svg>
   </div>
   <div id="passkey-modal" class="passkey-modal">
-      <div class="passkey-container">
-          <input type="password" id="passkey-input" placeholder="Enter Access Code">
-      </div>
+    <div class="passkey-container">
+      <input type="password" id="passkey-input" placeholder="Enter Access Code">
+    </div>
   </div>
-  
+
   <style>
     /* Secret Shield Styles */
     .secret-shield {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        width: 30px;
-        height: 30px;
-        color: rgba(255, 255, 255, 0.1); /* Subtle, blends in */
-        cursor: pointer;
-        z-index: 9999;
-        transition: color 0.3s;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      color: rgba(255, 255, 255, 0.1);
+      /* Subtle, blends in */
+      cursor: pointer;
+      z-index: 9999;
+      transition: color 0.3s;
     }
+
     .secret-shield:hover {
-        color: rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.3);
     }
-    
+
     .passkey-modal {
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0,0,0,0.8);
-        z-index: 10000;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        backdrop-filter: blur(5px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(5px);
     }
+
     .passkey-modal.active {
-        display: flex;
+      display: flex;
     }
+
     .passkey-container input {
-        background: #111;
-        border: 2px solid var(--gold);
-        color: var(--gold);
-        padding: 15px 25px;
-        font-size: 1.2rem;
-        border-radius: 8px;
-        outline: none;
-        text-align: center;
-        letter-spacing: 5px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      background: #111;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      padding: 15px 25px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      outline: none;
+      text-align: center;
+      letter-spacing: 5px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     }
   </style>
 
@@ -80,46 +88,46 @@
     const shield = document.getElementById('secret-shield');
     const modal = document.getElementById('passkey-modal');
     const passkeyInput = document.getElementById('passkey-input');
-    
+
     let clickCount = 0;
     let clickTimer = null;
 
     shield.addEventListener('click', () => {
-        clickCount++;
-        
-        if (clickCount === 1) {
-            clickTimer = setTimeout(() => {
-                clickCount = 0; // Reset after 1.5s
-            }, 1500);
-        }
+      clickCount++;
 
-        if (clickCount === 3) {
-            clearTimeout(clickTimer);
-            clickCount = 0;
-            modal.classList.add('active');
-            passkeyInput.focus();
-        }
+      if (clickCount === 1) {
+        clickTimer = setTimeout(() => {
+          clickCount = 0; // Reset after 1.5s
+        }, 1500);
+      }
+
+      if (clickCount === 3) {
+        clearTimeout(clickTimer);
+        clickCount = 0;
+        modal.classList.add('active');
+        passkeyInput.focus();
+      }
     });
 
     passkeyInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            if (passkeyInput.value === '111') {
-                sessionStorage.setItem('adminAuth', 'true');
-                window.location.href = 'admin.html';
-            } else {
-                alert('Access Denied');
-                modal.classList.remove('active');
-                passkeyInput.value = '';
-            }
+      if (e.key === 'Enter') {
+        if (passkeyInput.value === '111') {
+          sessionStorage.setItem('adminAuth', 'true');
+          window.location.href = 'admin.html';
+        } else {
+          alert('Access Denied');
+          modal.classList.remove('active');
+          passkeyInput.value = '';
         }
+      }
     });
-    
+
     // Close modal on outside click
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-            passkeyInput.value = '';
-        }
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        passkeyInput.value = '';
+      }
     });
   </script>
   <!-- Preloader -->
@@ -192,82 +200,82 @@
     </div>
   </section>
 
-  <!-- ===== ABOUT GYM MASTER ===== -->
-  <section class="section about" id="about">
+  <!-- ===== ABOUT GYM FOUNDER 1 ===== -->
+  <section class="section about founders-section" id="about">
     <div class="about-grid">
       <div class="about-image-wrapper reveal">
         <div class="about-image">
-          <img id="aboutImage" src="images/img_1.png" alt="Coach & Founder — DR DINO FITNESS & GYM Head Trainer">
-        </div>
-        <div class="about-float-badge">
-          <div class="yr">10+</div>
-          <div class="yr-label">Years Experience</div>
-        </div>
-        <div class="about-exp-bar">
-          <div class="bar-title">Training Expertise</div>
-          <div class="bar-track">
-            <div class="bar-fill"></div>
-          </div>
+          <img src="images/p1.png" alt="Founder 1 — DR DINO FITNESS & GYM">
         </div>
       </div>
 
       <div class="about-content reveal">
-        <div class="section-tag">★ Meet The Master</div>
+        <div class="section-tag">★ Visionary Leader</div>
         <h2 class="section-title">The Founder</h2>
-        <div class="about-role">Founder & Head Trainer — Certified Fitness Pro</div>
+        <div class="about-role">Founder & Head Coach</div>
         <p class="about-text">
-          With over a decade of experience in professional fitness coaching and bodybuilding, our founder has
-          transformed thousands of lives. A passionate fitness champion, he founded DR DINO FITNESS & GYM with a
-          vision to build a royal fitness destination that combines world-class infrastructure with personalized
-          training.
+          A dedicated fitness professional with a vision to revolutionize the training experience. With over a decade of
+          mastery in bodybuilding and nutrition, he has laid the foundation for DR DINO's elite standards.
         </p>
-        <p class="about-text">
-          His philosophy: "Strength isn't just about lifting weights — it's about lifting yourself beyond your limits."
-          Under his guidance, DR DINO FITNESS & GYM has produced over 40 competition winners and changed the lives of
-          thousands.
-        </p>
-        <div class="about-highlights">
-          <div class="highlight-item">
-            <div class="icon">🏆</div>
-            <span>Championship Coach</span>
-          </div>
-          <div class="highlight-item">
-            <div class="icon">🎓</div>
-            <span>Certified Master Trainer</span>
-          </div>
-          <div class="highlight-item">
-            <div class="icon">👥</div>
-            <span>3000+ Athletes Trained</span>
-          </div>
-          <div class="highlight-item">
-            <div class="icon">⭐</div>
-            <span>10+ Years Experience</span>
-          </div>
-        </div>
-        <a href="#contact" class="btn-primary">Train With Us →</a>
+
+
       </div>
     </div>
   </section>
 
-  <!-- ===== CLASSES ===== -->
-  <section class="classes-section" id="classes">
-    <h2 class="classes-title">CLASSES</h2>
-    <div class="classes-grid">
-      <div class="classes-card">
-        <h3 class="classes-label">CARDIO</h3>
-        <div class="classes-img-wrap">
-          <img src="images/c1.png" alt="Cardio Training at DR DINO GYM">
-        </div>
+  <!-- ===== ABOUT GYM FOUNDER 2 (Flipped) ===== -->
+  <section class="section about founders-section">
+    <div class="about-grid flipped">
+      <div class="about-content reveal">
+        <div class="section-tag">★ The Specialist</div>
+        <h2 class="section-title">The Founder</h2>
+        <div class="about-role">Founder & Strategic Lead</div>
+        <p class="about-text">
+          Driving the strategic growth and excellence of DR DINO. His commitment to providing a world-class environment
+          ensures that every athlete has the tools needed to surpass their own limits.
+        </p>
+
       </div>
-      <div class="classes-card">
-        <h3 class="classes-label">STRENGTH TRAINING</h3>
-        <div class="classes-img-wrap">
-          <img src="images/s1.png" alt="Strength Training at DR DINO GYM">
+
+      <div class="about-image-wrapper reveal">
+        <div class="about-image">
+          <img src="images/p2.png" alt="Founder 2 — DR DINO FITNESS & GYM">
         </div>
       </div>
     </div>
-    <a href="#contact" class="classes-schedule-btn">SCHEDULE</a>
   </section>
+
+  <style>
+    .founders-section {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .about-grid.flipped {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-grid.flipped .about-image-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 20px;
+    }
+
+    @media (max-width: 991px) {
+      .about-grid.flipped {
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      .about-grid.flipped .about-image-wrapper {
+        justify-content: center;
+        padding-right: 0;
+      }
+    }
+  </style>
 
   <!-- ===== INFRASTRUCTURE ===== -->
   <section class="infra-showcase" id="infrastructure">
@@ -288,11 +296,11 @@
     <div class="infra-content">
       <div class="infra-icon">
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-          <rect x="4" y="14" width="6" height="8" rx="1.5" stroke="white" stroke-width="2"/>
-          <rect x="26" y="14" width="6" height="8" rx="1.5" stroke="white" stroke-width="2"/>
-          <line x1="10" y1="18" x2="26" y2="18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-          <rect x="1" y="15.5" width="3" height="5" rx="1" stroke="white" stroke-width="1.5"/>
-          <rect x="32" y="15.5" width="3" height="5" rx="1" stroke="white" stroke-width="1.5"/>
+          <rect x="4" y="14" width="6" height="8" rx="1.5" stroke="white" stroke-width="2" />
+          <rect x="26" y="14" width="6" height="8" rx="1.5" stroke="white" stroke-width="2" />
+          <line x1="10" y1="18" x2="26" y2="18" stroke="white" stroke-width="2.5" stroke-linecap="round" />
+          <rect x="1" y="15.5" width="3" height="5" rx="1" stroke="white" stroke-width="1.5" />
+          <rect x="32" y="15.5" width="3" height="5" rx="1" stroke="white" stroke-width="1.5" />
         </svg>
       </div>
       <h2 class="infra-heading">Interior | Design | Branding</h2>
@@ -301,16 +309,87 @@
     </div>
   </section>
 
+  <!-- ===== CLASSES ===== -->
+  <section class="classes-section" id="classes">
+    <h2 class="classes-title">CLASSES</h2>
+    <div class="classes-grid">
+      <div class="classes-card">
+        <h3 class="classes-label">CARDIO</h3>
+        <div class="classes-img-wrap">
+          <img src="images/c1.png" alt="Cardio Training at DR DINO GYM">
+        </div>
+      </div>
+      <div class="classes-card">
+        <h3 class="classes-label">STRENGTH TRAINING</h3>
+        <div class="classes-img-wrap">
+          <img src="images/s1.png" alt="Strength Training at DR DINO GYM">
+        </div>
+      </div>
+    </div>
+    <button class="classes-schedule-btn" id="scheduleBtn" type="button">SCHEDULE</button>
+  </section>
+
+  <!-- Schedule Modal -->
+  <div id="scheduleModal" class="schedule-modal">
+    <div class="schedule-modal-backdrop"></div>
+    <div class="schedule-modal-content">
+      <button class="schedule-modal-close" id="scheduleModalClose">&times;</button>
+      <img src="images/sh.png" alt="Schedule">
+    </div>
+  </div>
+  <style>
+    .schedule-modal {
+      position: fixed; inset: 0;
+      z-index: 10000;
+      display: none;
+      align-items: center; justify-content: center;
+    }
+    .schedule-modal.active { display: flex; }
+    .schedule-modal-backdrop {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+    }
+    .schedule-modal-content {
+      position: relative;
+      max-width: 500px; width: 90%;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      animation: fadeInUp 0.3s ease;
+    }
+    .schedule-modal-content img {
+      width: 100%; height: auto; display: block;
+    }
+    .schedule-modal-close {
+      position: absolute; top: 8px; right: 12px;
+      background: rgba(0,0,0,0.6); color: #fff;
+      border: none; width: 32px; height: 32px;
+      border-radius: 50%; font-size: 1.2rem;
+      cursor: pointer; z-index: 1;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .schedule-modal-close:hover { background: #000; }
+  </style>
+  <script>
+    const scheduleBtn = document.getElementById('scheduleBtn');
+    const scheduleModal = document.getElementById('scheduleModal');
+    const scheduleModalClose = document.getElementById('scheduleModalClose');
+    const scheduleBackdrop = scheduleModal.querySelector('.schedule-modal-backdrop');
+
+    scheduleBtn.addEventListener('click', () => scheduleModal.classList.add('active'));
+    scheduleModalClose.addEventListener('click', () => scheduleModal.classList.remove('active'));
+    scheduleBackdrop.addEventListener('click', () => scheduleModal.classList.remove('active'));
+  </script>
+
   <!-- ===== REVIEWS ===== -->
   <section class="section reviews" id="reviews">
     <div class="reveal" style="text-align:center; margin-bottom:48px;">
       <div class="section-tag">💬 Google Reviews</div>
       <h2 class="section-title">What Our Members Say</h2>
-      <div class="google-rating">
-        <span class="google-rating-num">4.8</span>
-        <span class="google-rating-stars">★★★★★</span>
-        <span class="google-rating-count">Top Rated on Google</span>
-      </div>
+      <a href="https://www.google.com/search?q=chengelpattu+dr+dino+gym&oq=chengelpattu+dr+dino+gym&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIICAEQABgWGB4yCggCEAAYgAQYogQyCggDEAAYgAQYogQyCggEEAAYgAQYogTSAQg3NjA0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x3a52fd6b894c5171:0xde3f69f3b4abe837,3,,,," target="_blank" class="rate-us-btn">⭐ Rate Us on Google</a>
       <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">
         Real stories from real members. DR DINO FITNESS & GYM isn't just a gym — it's a family that transforms lives
         every single day.

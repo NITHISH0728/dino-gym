@@ -268,30 +268,8 @@ document.querySelectorAll('.infra-card, .achiever-card').forEach(card => {
   });
 });
 
-// ===== ABOUT IMAGE ALTERNATION =====
-const aboutImage = document.getElementById('aboutImage');
-if (aboutImage) {
-  // Two images to alternate in the About section
-  const images = ['images/hero.png', 'images/img_2.png'];
-  let currentImageIndex = 0;
-
-  // Set the initial image
-  aboutImage.src = images[currentImageIndex];
-
-  setInterval(() => {
-    // Add fade out effect
-    aboutImage.style.opacity = '0';
-
-    setTimeout(() => {
-      // Change the image source after fade out
-      currentImageIndex = (currentImageIndex + 1) % images.length;
-      aboutImage.src = images[currentImageIndex];
-
-      // Fade back in once the new image is loaded
-      aboutImage.style.opacity = '1';
-    }, 400);
-  }, 4000);
-}
+// ===== ABOUT IMAGE ALTERNATION (REMOVED) =====
+// Logic removed to support static founder images.
 
 // ===== GOLD SHIMMER ON SECTION TITLES =====
 const sectionTitles = document.querySelectorAll('.section-title');

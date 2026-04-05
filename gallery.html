@@ -18,7 +18,8 @@
     /* ===== INSTAGRAM PAGE — PREMIUM STANDALONE ===== */
 
     .insta-page-body {
-      background: #000000;
+      background: #ffffff;
+      color: #000000;
       min-height: 100vh;
     }
 
@@ -132,7 +133,7 @@
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.2rem, 5vw, 3.8rem);
       font-weight: 800;
-      color: #ffffff;
+      color: #000000;
       line-height: 1.15;
       margin-bottom: 16px;
       letter-spacing: -0.5px;
@@ -222,6 +223,7 @@
 
     .insta-feed-container {
       width: 100%;
+      height: 100%;
       margin: 0 auto;
       position: relative;
     }
@@ -386,8 +388,12 @@
 
   <hr class="insta-divider">
 
-  <section style="padding: 40px 24px 60px; max-width: 1400px; margin: 0 auto; color: #fff;">
-
+  <section style="padding: 40px 24px 60px; max-width: 1400px; margin: 0 auto; color: #000;">
+    <div class="reveal" style="text-align:center; margin-bottom:48px;">
+      <p class="section-subtitle" style="margin-left:auto;margin-right:auto; color: rgba(0,0,0,0.7);">
+        Experience the intensity and dedication inside DR DINO through our constantly updated live gallery.
+      </p>
+    </div>
 
     <div id="gallery-loader" style="text-align: center; display: none; color: #fcb045; padding: 20px;">
       Loading Photos...
@@ -404,7 +410,7 @@
         gap: 20px;
         padding: 20px;
       }
-      
+
       @media (min-width: 768px) {
         .gallery-masonry {
           grid-template-columns: repeat(3, 1fr);
@@ -414,10 +420,10 @@
       .gallery-item-card {
         border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
         position: relative;
-        background: #111;
+        background: #fff;
         aspect-ratio: 4/3;
       }
 
@@ -427,7 +433,8 @@
         z-index: 2;
       }
 
-      .gallery-item-card img, .gallery-item-card video {
+      .gallery-item-card img,
+      .gallery-item-card video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -442,7 +449,7 @@
 
         try {
           loader.style.display = 'block';
-          
+
           const cloudName = 'ddq8m4oec';
           const tag = 'gym_gallery';
           const listUrl = `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`;
@@ -455,7 +462,7 @@
           loader.style.display = 'none';
 
           if (!data.resources || data.resources.length === 0) {
-            galleryContainer.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: rgba(255,255,255,0.5);">No photos currently available in the gallery.</p>';
+            galleryContainer.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: rgba(0,0,0,0.5);">No photos currently available in the gallery.</p>';
             return;
           }
 
@@ -464,7 +471,7 @@
             card.className = 'gallery-item-card active';
 
             const isVideo = resource.format === 'mp4' || resource.format === 'mov' || resource.format === 'webm';
-            
+
             if (isVideo) {
               const videoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/vc_auto,sp_auto/v${resource.version}/${resource.public_id}.${resource.format}`;
               const video = document.createElement('video');
@@ -488,7 +495,7 @@
         } catch (error) {
           console.error(error);
           loader.style.display = 'none';
-          galleryContainer.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: rgba(255,255,255,0.5);">Unable to load gallery at this time.</p>';
+          galleryContainer.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: rgba(0,0,0,0.5);">Unable to load gallery at this time.</p>';
         }
       });
     </script>
