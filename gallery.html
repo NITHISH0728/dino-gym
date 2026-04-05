@@ -400,9 +400,15 @@
     <style>
       .gallery-masonry {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: repeat(1, 1fr);
         gap: 20px;
         padding: 20px;
+      }
+      
+      @media (min-width: 768px) {
+        .gallery-masonry {
+          grid-template-columns: repeat(3, 1fr);
+        }
       }
 
       .gallery-item-card {
@@ -421,7 +427,7 @@
         z-index: 2;
       }
 
-      .gallery-item-card img {
+      .gallery-item-card img, .gallery-item-card video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -436,28 +442,47 @@
 
         try {
           loader.style.display = 'block';
-          const response = await fetch('/.netlify/functions/list-photos');
+          
+          const cloudName = 'ddq8m4oec';
+          const tag = 'gym_gallery';
+          const listUrl = `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`;
+
+          const response = await fetch(listUrl);
 
           if (!response.ok) throw new Error('Failed to fetch gallery');
 
-          const photos = await response.json();
+          const data = await response.json();
           loader.style.display = 'none';
 
-          if (photos.length === 0) {
+          if (!data.resources || data.resources.length === 0) {
             galleryContainer.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: rgba(255,255,255,0.5);">No photos currently available in the gallery.</p>';
             return;
           }
 
-          photos.forEach(photo => {
+          data.resources.forEach(resource => {
             const card = document.createElement('div');
             card.className = 'gallery-item-card reveal';
 
-            const img = document.createElement('img');
-            img.src = photo.url;
-            img.alt = 'Gym Moment';
-            img.loading = 'lazy';
+            const isVideo = resource.format === 'mp4' || resource.format === 'mov' || resource.format === 'webm';
+            
+            if (isVideo) {
+              const videoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/vc_auto,sp_auto/v${resource.version}/${resource.public_id}.${resource.format}`;
+              const video = document.createElement('video');
+              video.src = videoUrl;
+              video.controls = true;
+              video.muted = true;
+              video.loop = true;
+              video.playsInline = true;
+              card.appendChild(video);
+            } else {
+              const imgUrl = `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/v${resource.version}/${resource.public_id}.${resource.format}`;
+              const img = document.createElement('img');
+              img.src = imgUrl;
+              img.alt = 'Gym Moment';
+              img.loading = 'lazy';
+              card.appendChild(img);
+            }
 
-            card.appendChild(img);
             galleryContainer.appendChild(card);
           });
         } catch (error) {
