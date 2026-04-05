@@ -204,8 +204,9 @@
   <section class="section about founders-section" id="about">
     <div class="about-grid">
       <div class="about-image-wrapper reveal">
-        <div class="about-image">
-          <img src="images/p1.png" alt="Founder 1 — DR DINO FITNESS & GYM">
+        <div class="about-image founder-slideshow" id="founder1Slideshow">
+          <img src="images/img_1.png" alt="Founder 1 — DR DINO FITNESS &amp; GYM" class="founder-img active">
+          <img src="images/img_2.png" alt="Founder 1 — DR DINO FITNESS &amp; GYM" class="founder-img">
         </div>
       </div>
 
@@ -238,44 +239,13 @@
       </div>
 
       <div class="about-image-wrapper reveal">
-        <div class="about-image">
-          <img src="images/p2.png" alt="Founder 2 — DR DINO FITNESS & GYM">
+        <div class="about-image founder-slideshow" id="founder2Slideshow">
+          <img src="images/p1.png" alt="Founder 2 — DR DINO FITNESS &amp; GYM" class="founder-img active">
+          <img src="images/p2.png" alt="Founder 2 — DR DINO FITNESS &amp; GYM" class="founder-img">
         </div>
       </div>
     </div>
   </section>
-
-  <style>
-    .founders-section {
-      padding-top: 40px;
-      padding-bottom: 40px;
-    }
-
-    .about-grid.flipped {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .about-grid.flipped .about-image-wrapper {
-      display: flex;
-      justify-content: flex-end;
-      padding-right: 20px;
-    }
-
-    @media (max-width: 991px) {
-      .about-grid.flipped {
-        grid-template-columns: 1fr;
-        display: flex;
-        flex-direction: column-reverse;
-      }
-      .about-grid.flipped .about-image-wrapper {
-        justify-content: center;
-        padding-right: 0;
-      }
-    }
-  </style>
 
   <!-- ===== INFRASTRUCTURE ===== -->
   <section class="infra-showcase" id="infrastructure">
@@ -339,39 +309,64 @@
   </div>
   <style>
     .schedule-modal {
-      position: fixed; inset: 0;
+      position: fixed;
+      inset: 0;
       z-index: 10000;
       display: none;
-      align-items: center; justify-content: center;
+      align-items: center;
+      justify-content: center;
     }
-    .schedule-modal.active { display: flex; }
+
+    .schedule-modal.active {
+      display: flex;
+    }
+
     .schedule-modal-backdrop {
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0.7);
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(4px);
     }
+
     .schedule-modal-content {
       position: relative;
-      max-width: 500px; width: 90%;
+      max-width: 500px;
+      width: 90%;
       background: #fff;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
       animation: fadeInUp 0.3s ease;
     }
+
     .schedule-modal-content img {
-      width: 100%; height: auto; display: block;
+      width: 100%;
+      height: auto;
+      display: block;
     }
+
     .schedule-modal-close {
-      position: absolute; top: 8px; right: 12px;
-      background: rgba(0,0,0,0.6); color: #fff;
-      border: none; width: 32px; height: 32px;
-      border-radius: 50%; font-size: 1.2rem;
-      cursor: pointer; z-index: 1;
-      display: flex; align-items: center; justify-content: center;
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: background 0.2s;
     }
-    .schedule-modal-close:hover { background: #000; }
+
+    .schedule-modal-close:hover {
+      background: #000;
+    }
   </style>
   <script>
     const scheduleBtn = document.getElementById('scheduleBtn');
@@ -389,7 +384,8 @@
     <div class="reveal" style="text-align:center; margin-bottom:48px;">
       <div class="section-tag">💬 Google Reviews</div>
       <h2 class="section-title">What Our Members Say</h2>
-      <a href="https://www.google.com/search?q=chengelpattu+dr+dino+gym&oq=chengelpattu+dr+dino+gym&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIICAEQABgWGB4yCggCEAAYgAQYogQyCggDEAAYgAQYogQyCggEEAAYgAQYogTSAQg3NjA0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x3a52fd6b894c5171:0xde3f69f3b4abe837,3,,,," target="_blank" class="rate-us-btn">⭐ Rate Us on Google</a>
+      <a href="https://www.google.com/search?q=chengelpattu+dr+dino+gym&oq=chengelpattu+dr+dino+gym&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIICAEQABgWGB4yCggCEAAYgAQYogQyCggDEAAYgAQYogQyCggEEAAYgAQYogTSAQg3NjA0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x3a52fd6b894c5171:0xde3f69f3b4abe837,3,,,,"
+        target="_blank" class="rate-us-btn">⭐ Rate Us on Google</a>
       <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">
         Real stories from real members. DR DINO FITNESS & GYM isn't just a gym — it's a family that transforms lives
         every single day.
@@ -533,7 +529,7 @@
     <div class="footer-bottom">
       <span>© 2026 DR DINO FITNESS & GYM. All rights reserved.</span>
       <div class="footer-socials">
-        <a href="https://www.instagram.com/shanmugammanishanmugam/" target="_blank" aria-label="Instagram">📷</a>
+        <a href="" target="_blank" aria-label="Instagram">📷</a>
         <a href="#" aria-label="YouTube">▶</a>
         <a href="#" aria-label="Facebook">f</a>
         <a href="#" aria-label="Twitter">𝕏</a>

@@ -268,8 +268,28 @@ document.querySelectorAll('.infra-card, .achiever-card').forEach(card => {
   });
 });
 
-// ===== ABOUT IMAGE ALTERNATION (REMOVED) =====
-// Logic removed to support static founder images.
+// ===== FOUNDER IMAGE SLIDESHOW =====
+function initFounderSlideshow(containerId, intervalMs) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const images = container.querySelectorAll('.founder-img');
+  if (images.length < 2) return;
+
+  let currentIndex = 0;
+
+  setInterval(() => {
+    // Remove active from current
+    images[currentIndex].classList.remove('active');
+    // Move to next
+    currentIndex = (currentIndex + 1) % images.length;
+    // Add active to next
+    images[currentIndex].classList.add('active');
+  }, intervalMs);
+}
+
+// Start both slideshows with slightly different intervals for visual variety
+initFounderSlideshow('founder1Slideshow', 3000);
+initFounderSlideshow('founder2Slideshow', 3500);
 
 // ===== GOLD SHIMMER ON SECTION TITLES =====
 const sectionTitles = document.querySelectorAll('.section-title');
