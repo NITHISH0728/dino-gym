@@ -196,28 +196,52 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    
+    // Collect values
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const interest = document.getElementById('interest').value;
+    const message = document.getElementById('message').value;
+
     const btn = document.getElementById('submitBtn');
     const originalText = btn.textContent;
 
-    btn.textContent = 'Sending...';
+    // The UX
+    btn.textContent = 'Connecting to WhatsApp...';
     btn.style.opacity = '0.7';
     btn.disabled = true;
 
+    // The Backup: Silently send to Netlify Forms
+    const formData = new URLSearchParams();
+    formData.append("form-name", "Gym-Leads");
+    formData.append("name", name);
+    formData.append("phone", phone);
+    formData.append("email", email);
+    formData.append("interest", interest);
+    formData.append("message", message);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formData.toString(),
+    }).catch(error => console.error('Form submission error:', error));
+
     setTimeout(() => {
-      btn.textContent = '✓ Message Sent!';
-      btn.style.opacity = '1';
-      btn.style.background = 'linear-gradient(135deg, #000000, #333333)';
-      btn.style.color = '#FFFFFF';
+      // The Formatting
+      const waMessage = `🦖 DR DINO GYM INQUIRY\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n✉️ Email: ${email}\n🏋️ Interest: ${interest}\n🎯 Goal: ${message}`;
+      const encodedMessage = encodeURIComponent(waMessage);
+      
+      // The Redirection
+      const waUrl = `https://wa.me/918608113558?text=${encodedMessage}`;
+      window.open(waUrl, '_blank');
 
       contactForm.reset();
-
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        btn.style.color = '';
-        btn.disabled = false;
-      }, 3000);
-    }, 1500);
+      
+      btn.textContent = originalText;
+      btn.style.opacity = '1';
+      btn.disabled = false;
+    }, 1200);
   });
 }
 
