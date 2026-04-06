@@ -395,28 +395,73 @@
       </p>
     </div>
 
-    <div id="gallery-loader" style="text-align: center; display: none; color: #fcb045; padding: 20px;">
-      Loading Photos...
+    <!-- ===== TAB BUTTONS ===== -->
+    <div class="gallery-tabs">
+      <button class="gallery-tab active" id="tabPhotos" onclick="switchTab('photos')">📸 Photos</button>
+      <button class="gallery-tab" id="tabVideos" onclick="switchTab('videos')">🎬 Videos</button>
     </div>
 
-    <div class="gallery-masonry" id="public-gallery">
-      <!-- Photos injected here via JS -->
-    </div>
+    <!-- Shared loader -->
+    <div id="gallery-loader" class="gallery-loader-msg" style="display: none;">Loading...</div>
+
+    <!-- Photos Grid (visible by default) -->
+    <div class="gallery-masonry gallery-panel active" id="photo-gallery"></div>
+
+    <!-- Videos Grid (hidden by default) -->
+    <div class="gallery-masonry gallery-panel" id="video-gallery"></div>
 
     <style>
-      .gallery-masonry {
+      .gallery-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 32px;
+      }
+      .gallery-tab {
+        padding: 14px 36px;
+        border: 2px solid rgba(0, 0, 0, 0.12);
+        border-radius: 50px;
+        background: #fff;
+        color: #000;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        letter-spacing: 0.5px;
+      }
+      .gallery-tab:hover {
+        border-color: #000;
+        background: #f5f5f5;
+      }
+      .gallery-tab.active {
+        background: #000;
+        color: #fff;
+        border-color: #000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+      .gallery-panel {
+        display: none;
+      }
+      .gallery-panel.active {
         display: grid;
+      }
+      .gallery-loader-msg {
+        text-align: center;
+        color: #fcb045;
+        padding: 20px;
+        font-weight: 500;
+      }
+      .gallery-masonry {
         grid-template-columns: repeat(1, 1fr);
         gap: 20px;
         padding: 20px;
       }
-
       @media (min-width: 768px) {
         .gallery-masonry {
           grid-template-columns: repeat(3, 1fr);
         }
       }
-
       .gallery-item-card {
         border-radius: 12px;
         overflow: hidden;
@@ -426,13 +471,11 @@
         background: #fff;
         aspect-ratio: 4/3;
       }
-
       .gallery-item-card:hover {
         transform: translateY(-5px) scale(1.02);
         box-shadow: 0 8px 25px rgba(252, 176, 69, 0.4);
         z-index: 2;
       }
-
       .gallery-item-card img,
       .gallery-item-card video {
         width: 100%;
@@ -440,11 +483,42 @@
         object-fit: cover;
         display: block;
       }
+      .gallery-empty {
+        text-align: center;
+        grid-column: 1 / -1;
+        color: rgba(0, 0, 0, 0.4);
+        padding: 40px 20px;
+        font-size: 0.95rem;
+      }
+      .gallery-empty .empty-icon {
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+      }
     </style>
 
     <script>
+      function switchTab(tab) {
+        const tabPhotos = document.getElementById('tabPhotos');
+        const tabVideos = document.getElementById('tabVideos');
+        const photoPanel = document.getElementById('photo-gallery');
+        const videoPanel = document.getElementById('video-gallery');
+
+        if (tab === 'photos') {
+          tabPhotos.classList.add('active');
+          tabVideos.classList.remove('active');
+          photoPanel.classList.add('active');
+          videoPanel.classList.remove('active');
+        } else {
+          tabVideos.classList.add('active');
+          tabPhotos.classList.remove('active');
+          videoPanel.classList.add('active');
+          photoPanel.classList.remove('active');
+        }
+      }
+
       document.addEventListener('DOMContentLoaded', async () => {
-        const galleryContainer = document.getElementById('public-gallery');
+        const photoGallery = document.getElementById('photo-gallery');
+        const videoGallery = document.getElementById('video-gallery');
         const loader = document.getElementById('gallery-loader');
 
         try {
@@ -455,22 +529,25 @@
           const listUrl = `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`;
 
           const response = await fetch(listUrl);
-
           if (!response.ok) throw new Error('Failed to fetch gallery');
 
           const data = await response.json();
           loader.style.display = 'none';
 
           if (!data.resources || data.resources.length === 0) {
-            galleryContainer.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: rgba(0,0,0,0.5);">No photos currently available in the gallery.</p>';
+            photoGallery.innerHTML = '<div class="gallery-empty"><div class="empty-icon">📷</div><p>No photos available yet.</p></div>';
+            videoGallery.innerHTML = '<div class="gallery-empty"><div class="empty-icon">🎥</div><p>No videos available yet.</p></div>';
             return;
           }
 
+          const videoFormats = ['mp4', 'mov', 'webm'];
+          let photoCount = 0;
+          let videoCount = 0;
+
           data.resources.forEach(resource => {
             const card = document.createElement('div');
-            card.className = 'gallery-item-card active';
-
-            const isVideo = resource.format === 'mp4' || resource.format === 'mov' || resource.format === 'webm';
+            card.className = 'gallery-item-card';
+            const isVideo = videoFormats.includes(resource.format);
 
             if (isVideo) {
               const videoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/vc_auto,sp_auto/v${resource.version}/${resource.public_id}.${resource.format}`;
@@ -480,22 +557,34 @@
               video.muted = true;
               video.loop = true;
               video.playsInline = true;
+              video.preload = 'metadata';
               card.appendChild(video);
+              videoGallery.appendChild(card);
+              videoCount++;
             } else {
               const imgUrl = `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/v${resource.version}/${resource.public_id}.${resource.format}`;
               const img = document.createElement('img');
               img.src = imgUrl;
-              img.alt = 'Gym Moment';
+              img.alt = 'DR DINO Gym Moment';
               img.loading = 'lazy';
               card.appendChild(img);
+              photoGallery.appendChild(card);
+              photoCount++;
             }
-
-            galleryContainer.appendChild(card);
           });
+
+          if (photoCount === 0) {
+            photoGallery.innerHTML = '<div class="gallery-empty"><div class="empty-icon">📷</div><p>No photos available yet.</p></div>';
+          }
+          if (videoCount === 0) {
+            videoGallery.innerHTML = '<div class="gallery-empty"><div class="empty-icon">🎥</div><p>No videos available yet.</p></div>';
+          }
+
         } catch (error) {
           console.error(error);
           loader.style.display = 'none';
-          galleryContainer.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: rgba(0,0,0,0.5);">Unable to load gallery at this time.</p>';
+          photoGallery.innerHTML = '<div class="gallery-empty"><div class="empty-icon">⚠️</div><p>Unable to load photos at this time.</p></div>';
+          videoGallery.innerHTML = '<div class="gallery-empty"><div class="empty-icon">⚠️</div><p>Unable to load videos at this time.</p></div>';
         }
       });
     </script>
