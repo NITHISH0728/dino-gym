@@ -169,9 +169,9 @@ body {
 }
 
 .logo-img {
-  width: 48px;
+  width: 88px;
   height: 48px;
-  border-radius: 50%;
+  border-radius: 4px;
   object-fit: cover;
   border: 2px solid var(--gold);
   box-shadow: 0 0 20px var(--gold-glow);
@@ -1720,7 +1720,7 @@ body {
   }
 
   .logo-img {
-    width: 38px;
+    width: 68px;
     height: 38px;
   }
 
@@ -1964,7 +1964,7 @@ body {
   }
 
   .logo-img {
-    width: 34px;
+    width: 64px;
     height: 34px;
   }
 

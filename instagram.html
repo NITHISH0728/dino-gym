@@ -16,45 +16,56 @@
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦖</text></svg>">
   <style>
-    /* ===== INSTAGRAM PAGE — PREMIUM STANDALONE ===== */
+    /* ===== INSTAGRAM PAGE — BLACK & LIGHT GREY THEME ===== */
 
     .insta-page-body {
-      background: #ffffff;
-      color: #000000;
+      background: #0a0a0a;
+      color: #d0d0d0;
       min-height: 100vh;
     }
 
-    /* --- Hero Banner --- */
+    /* --- Hero Banner with Background Image --- */
     .insta-hero {
       position: relative;
-      padding: 140px 24px 40px;
+      padding: 0 0 40px;
       text-align: left;
       overflow: hidden;
+      background: #0a0a0a;
     }
 
-    /* Ambient glow background */
+    .insta-hero .insta-bg-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0.7;
+    }
+
+    /* Light transparent overlay for readability */
     .insta-hero::before {
       content: '';
       position: absolute;
-      top: -50%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(131, 58, 180, 0.15) 0%, rgba(253, 29, 29, 0.08) 40%, transparent 70%);
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.10) 70%,
+        rgba(10, 10, 10, 0.85) 100%
+      );
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
     }
 
     .insta-hero-inner {
-      position: relative;
-      z-index: 1;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
       max-width: 70%;
-      margin: 0 auto;
       text-align: center;
     }
 
-    /* Instagram icon */
+    /* Instagram icon — monochrome */
     .insta-icon-wrap {
       display: inline-flex;
       align-items: center;
@@ -62,10 +73,12 @@
       width: 72px;
       height: 72px;
       border-radius: 20px;
-      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       margin-bottom: 28px;
-      box-shadow: 0 8px 40px rgba(131, 58, 180, 0.35);
+      box-shadow: 0 8px 40px rgba(255, 255, 255, 0.06);
       animation: iconPulse 3s ease-in-out infinite;
+      backdrop-filter: blur(12px);
     }
 
     .insta-icon-wrap svg {
@@ -75,14 +88,11 @@
     }
 
     @keyframes iconPulse {
-
-      0%,
-      100% {
-        box-shadow: 0 8px 40px rgba(131, 58, 180, 0.35);
+      0%, 100% {
+        box-shadow: 0 8px 40px rgba(255, 255, 255, 0.06);
       }
-
       50% {
-        box-shadow: 0 12px 60px rgba(253, 29, 29, 0.45);
+        box-shadow: 0 12px 60px rgba(255, 255, 255, 0.12);
       }
     }
 
@@ -100,13 +110,13 @@
       align-items: center;
       gap: 8px;
       padding: 6px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 50px;
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(0, 0, 0, 0.5);
+      color: rgba(255, 255, 255, 0.6);
       margin-bottom: 20px;
     }
 
@@ -114,35 +124,29 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: #fd1d1d;
+      background: #b0b0b0;
       animation: dotBlink 2s ease-in-out infinite;
     }
 
     @keyframes dotBlink {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.3;
-      }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
     }
 
     .insta-hero h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.2rem, 5vw, 3.8rem);
       font-weight: 800;
-      color: #000000;
+      color: #ffffff;
       line-height: 1.15;
       margin-bottom: 16px;
       letter-spacing: -0.5px;
       text-align: center;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
     }
 
     .insta-hero h1 .gradient-text {
-      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      background: linear-gradient(135deg, #e0e0e0, #888888);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -150,7 +154,7 @@
 
     .insta-hero-sub {
       font-size: 1.05rem;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.55);
       line-height: 1.7;
       max-width: 500px;
       margin: 0 auto 28px;
@@ -162,25 +166,27 @@
       align-items: center;
       gap: 14px;
       padding: 10px 24px 10px 10px;
-      background: rgba(0, 0, 0, 0.05);
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 60px;
       text-decoration: none;
       transition: all 0.35s ease;
+      backdrop-filter: blur(8px);
     }
 
     .insta-profile-badge:hover {
-      background: rgba(0, 0, 0, 0.08);
-      border-color: rgba(131, 58, 180, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(131, 58, 180, 0.15);
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.06);
     }
 
     .insta-profile-badge .badge-avatar {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -199,27 +205,28 @@
     .insta-profile-badge .badge-handle {
       font-weight: 700;
       font-size: 0.92rem;
-      color: #000000;
+      color: #ffffff;
     }
 
     .insta-profile-badge .badge-label {
       font-size: 0.72rem;
-      color: rgba(0, 0, 0, 0.5);
+      color: rgba(255, 255, 255, 0.45);
       letter-spacing: 0.5px;
     }
 
-    /* Separator line */
+    /* Separator line — monochrome */
     .insta-divider {
       max-width: 200px;
-      height: 2px;
+      height: 1px;
       margin: 0 auto 0;
-      background: linear-gradient(90deg, transparent, rgba(131, 58, 180, 0.5), rgba(253, 29, 29, 0.5), rgba(252, 176, 69, 0.5), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), rgba(180, 180, 180, 0.3), rgba(255, 255, 255, 0.2), transparent);
       border: none;
     }
 
     /* --- Feed Container --- */
     .insta-feed-section {
       padding: 40px 24px 60px;
+      background: #0a0a0a;
     }
 
     .insta-feed-container {
@@ -234,14 +241,13 @@
       width: 100%;
     }
 
-
     .insta-feed-container .feed-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 24px;
       padding-bottom: 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .feed-header-left {
@@ -254,7 +260,7 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #00e676;
+      background: #b0b0b0;
       animation: dotBlink 1.5s ease-in-out infinite;
     }
 
@@ -269,24 +275,25 @@
     .feed-header-right a {
       font-size: 0.82rem;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.35);
+      color: rgba(255, 255, 255, 0.5);
       text-decoration: none;
       padding: 8px 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 50px;
       transition: all 0.3s;
     }
 
     .feed-header-right a:hover {
       color: #ffffff;
-      border-color: rgba(131, 58, 180, 0.5);
-      background: rgba(131, 58, 180, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.06);
     }
 
     /* --- Back to Home CTA --- */
     .insta-back-section {
       text-align: center;
       padding: 20px 24px 60px;
+      background: #0a0a0a;
     }
 
     .insta-back-btn {
@@ -295,7 +302,7 @@
       gap: 10px;
       padding: 14px 36px;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 50px;
       color: rgba(255, 255, 255, 0.6);
       font-weight: 600;
@@ -309,13 +316,89 @@
       background: rgba(255, 255, 255, 0.1);
       color: #ffffff;
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.06);
+    }
+
+    /* --- Footer override for dark theme --- */
+    .insta-page-body .footer {
+      background: #111111;
+      color: rgba(255, 255, 255, 0.7);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .insta-page-body .footer-brand p {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .insta-page-body .footer h4 {
+      color: #ffffff;
+    }
+
+    .insta-page-body .footer ul a {
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .insta-page-body .footer ul a:hover {
+      color: #ffffff;
+    }
+
+    .insta-page-body .footer-bottom {
+      border-top-color: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .insta-page-body .footer-socials a {
+      border-color: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .insta-page-body .footer-socials a:hover {
+      background: #ffffff;
+      border-color: #ffffff;
+      color: #000000;
+    }
+
+    /* --- Navbar override for dark theme --- */
+    .insta-page-body .navbar {
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .insta-page-body .navbar.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+    }
+
+    .insta-page-body .nav-links a {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .insta-page-body .nav-links a:hover,
+    .insta-page-body .nav-links a.active {
+      color: #ffffff;
+    }
+
+    .insta-page-body .nav-cta {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .insta-page-body .nav-cta:hover {
+      background: #d0d0d0;
+    }
+
+    .insta-page-body .logo-text {
+      color: #ffffff;
+    }
+
+    .insta-page-body .logo-text .gold {
+      color: #b0b0b0;
     }
 
     /* --- Responsive --- */
     @media (max-width: 768px) {
       .insta-hero {
-        padding: 120px 16px 30px;
+        padding: 0 0 40px;
       }
 
       .insta-feed-container {
@@ -380,21 +463,10 @@
 
   <!-- ===== HERO HEADER ===== -->
   <section class="insta-hero" id="instagram-feed">
+    <img src="images/ins_bg.png" alt="Instagram Profile" class="insta-bg-img">
     <div class="insta-hero-inner">
-      <!-- Instagram Icon -->
-
-
-      <!-- Tag -->
-      <div class="insta-tag">
-        <span class="dot"></span>
-        Live Feed
-      </div>
-
       <!-- Title -->
       <h1>Follow Our <span class="gradient-text">Daily Grind</span></h1>
-
-
-
     </div>
   </section>
 
@@ -467,7 +539,7 @@
     <div class="footer-bottom">
       <span>© 2026 DR DINO FITNESS & GYM. All rights reserved.</span>
       <div class="footer-socials">
-        <a href="https://www.instagram.com/shanmugammanishanmugam/" target="_blank" aria-label="Instagram">📷</a>
+        <a href="" target="_blank" aria-label="Instagram">📷</a>
         <a href="#" aria-label="YouTube">▶</a>
         <a href="#" aria-label="Facebook">f</a>
         <a href="#" aria-label="Twitter">𝕏</a>

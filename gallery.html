@@ -18,8 +18,8 @@
     /* ===== INSTAGRAM PAGE — PREMIUM STANDALONE ===== */
 
     .insta-page-body {
-      background: #ffffff;
-      color: #000000;
+      background: #000000;
+      color: #cccccc;
       min-height: 100vh;
     }
 
@@ -29,6 +29,8 @@
       padding: 140px 24px 40px;
       text-align: left;
       overflow: hidden;
+      background: url('images/bg_img.png') no-repeat center center;
+      background-size: cover;
     }
 
     /* Ambient glow background */
@@ -40,7 +42,7 @@
       transform: translateX(-50%);
       width: 800px;
       height: 800px;
-      background: radial-gradient(circle, rgba(131, 58, 180, 0.15) 0%, rgba(253, 29, 29, 0.08) 40%, transparent 70%);
+      background: radial-gradient(circle, rgba(150, 150, 150, 0.15) 0%, rgba(100, 100, 100, 0.08) 40%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -61,9 +63,9 @@
       width: 72px;
       height: 72px;
       border-radius: 20px;
-      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      background: linear-gradient(135deg, #666666, #aaaaaa, #dddddd);
       margin-bottom: 28px;
-      box-shadow: 0 8px 40px rgba(131, 58, 180, 0.35);
+      box-shadow: 0 8px 40px rgba(100, 100, 100, 0.35);
       animation: iconPulse 3s ease-in-out infinite;
     }
 
@@ -77,11 +79,11 @@
 
       0%,
       100% {
-        box-shadow: 0 8px 40px rgba(131, 58, 180, 0.35);
+        box-shadow: 0 8px 40px rgba(100, 100, 100, 0.35);
       }
 
       50% {
-        box-shadow: 0 12px 60px rgba(253, 29, 29, 0.45);
+        box-shadow: 0 12px 60px rgba(150, 150, 150, 0.45);
       }
     }
 
@@ -133,7 +135,7 @@
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.2rem, 5vw, 3.8rem);
       font-weight: 800;
-      color: #000000;
+      color: #ffffff;
       line-height: 1.15;
       margin-bottom: 16px;
       letter-spacing: -0.5px;
@@ -141,7 +143,7 @@
     }
 
     .insta-hero h1 .gradient-text {
-      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      background: linear-gradient(135deg, #cccccc, #ffffff, #999999);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -212,7 +214,7 @@
       max-width: 200px;
       height: 2px;
       margin: 0 auto 0;
-      background: linear-gradient(90deg, transparent, rgba(131, 58, 180, 0.5), rgba(253, 29, 29, 0.5), rgba(252, 176, 69, 0.5), transparent);
+      background: linear-gradient(90deg, transparent, rgba(150, 150, 150, 0.5), rgba(200, 200, 200, 0.5), transparent);
       border: none;
     }
 
@@ -340,11 +342,13 @@
         height: 28px;
       }
     }
+
     /* Secret Shield Styles */
     .secret-shield {
       width: 40px;
       height: 40px;
-      color: rgba(0, 0, 0, 0.3); /* dark color to contrast light background */
+      color: rgba(0, 0, 0, 0.3);
+      /* dark color to contrast light background */
       cursor: pointer;
       transition: color 0.3s;
     }
@@ -424,30 +428,32 @@
   <!-- ===== GALLERY SECTION ===== -->
   <section class="insta-hero">
     <div class="insta-hero-inner" style="display: flex; justify-content: center; align-items: center;">
-      <h1 style="display: flex; align-items: center; justify-content: center; gap: 20px; text-align: center; margin: 0;"> 
+      <h1
+        style="display: flex; align-items: center; justify-content: center; gap: 20px; text-align: center; margin: 0;">
         <span class="gradient-text">Gallery</span>
         <!-- ===== SECRET SHIELD ENTRANCE ===== -->
         <div id="secret-shield" class="secret-shield" title="Authorized Personnel Only">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
           </svg>
         </div>
       </h1>
     </div>
 
-  <!-- Passkey Modal for Shield -->
-  <div id="passkey-modal" class="passkey-modal">
-    <div class="passkey-container">
-      <input type="password" id="passkey-input" placeholder="Enter Access Code">
+    <!-- Passkey Modal for Shield -->
+    <div id="passkey-modal" class="passkey-modal">
+      <div class="passkey-container">
+        <input type="password" id="passkey-input" placeholder="Enter Access Code">
+      </div>
     </div>
-  </div>
   </section>
 
   <hr class="insta-divider">
 
-  <section style="padding: 40px 24px 60px; max-width: 1400px; margin: 0 auto; color: #000;">
+  <section style="padding: 40px 24px 60px; max-width: 1400px; margin: 0 auto; color: #cccccc;">
     <div class="reveal" style="text-align:center; margin-bottom:48px;">
-      <p class="section-subtitle" style="margin-left:auto;margin-right:auto; color: rgba(0,0,0,0.7);">
+      <p class="section-subtitle" style="margin-left:auto;margin-right:auto; color: rgba(255,255,255,0.7);">
         Experience the intensity and dedication inside DR DINO through our constantly updated live gallery.
       </p>
     </div>
@@ -474,12 +480,13 @@
         gap: 12px;
         margin-bottom: 32px;
       }
+
       .gallery-tab {
         padding: 14px 36px;
-        border: 2px solid rgba(0, 0, 0, 0.12);
+        border: 2px solid rgba(255, 255, 255, 0.12);
         border-radius: 50px;
-        background: #fff;
-        color: #000;
+        background: #1a1a1a;
+        color: #ffffff;
         font-family: 'Inter', sans-serif;
         font-weight: 700;
         font-size: 1rem;
@@ -487,52 +494,62 @@
         transition: all 0.3s ease;
         letter-spacing: 0.5px;
       }
+
       .gallery-tab:hover {
-        border-color: #000;
-        background: #f5f5f5;
+        border-color: #ffffff;
+        background: #333333;
       }
+
       .gallery-tab.active {
-        background: #000;
-        color: #fff;
-        border-color: #000;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        background: #ffffff;
+        color: #000000;
+        border-color: #ffffff;
+        box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
       }
+
       .gallery-panel {
         display: none;
       }
+
       .gallery-panel.active {
         display: grid;
       }
+
       .gallery-loader-msg {
         text-align: center;
-        color: #fcb045;
+        color: #cccccc;
         padding: 20px;
         font-weight: 500;
       }
+
       .gallery-masonry {
         grid-template-columns: repeat(1, 1fr);
         gap: 20px;
         padding: 20px;
       }
+
       @media (min-width: 768px) {
         .gallery-masonry {
           grid-template-columns: repeat(3, 1fr);
         }
       }
+
       .gallery-item-card {
         border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         transition: all 0.3s ease;
         position: relative;
-        background: #fff;
+        background: #222222;
         aspect-ratio: 4/3;
       }
+
       .gallery-item-card:hover {
         transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 8px 25px rgba(252, 176, 69, 0.4);
+        box-shadow: 0 8px 25px rgba(200, 200, 200, 0.2);
         z-index: 2;
       }
+
       .gallery-item-card img,
       .gallery-item-card video {
         width: 100%;
@@ -540,13 +557,15 @@
         object-fit: cover;
         display: block;
       }
+
       .gallery-empty {
         text-align: center;
         grid-column: 1 / -1;
-        color: rgba(0, 0, 0, 0.4);
+        color: rgba(255, 255, 255, 0.4);
         padding: 40px 20px;
         font-size: 0.95rem;
       }
+
       .gallery-empty .empty-icon {
         font-size: 2.5rem;
         margin-bottom: 12px;
@@ -567,10 +586,12 @@
         opacity: 0;
         transition: opacity 0.3s ease;
       }
+
       .lightbox-overlay.active {
         display: flex;
         opacity: 1;
       }
+
       .lightbox-overlay img {
         max-width: 90vw;
         max-height: 90vh;
@@ -579,10 +600,19 @@
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
         animation: lightboxZoom 0.3s ease;
       }
+
       @keyframes lightboxZoom {
-        from { transform: scale(0.85); opacity: 0; }
-        to { transform: scale(1); opacity: 1; }
+        from {
+          transform: scale(0.85);
+          opacity: 0;
+        }
+
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
       }
+
       .lightbox-close {
         position: absolute;
         top: 20px;
@@ -601,10 +631,12 @@
         transition: all 0.3s;
         z-index: 10002;
       }
+
       .lightbox-close:hover {
         background: rgba(255, 255, 255, 0.25);
         transform: rotate(90deg);
       }
+
       .gallery-item-card img {
         cursor: zoom-in;
       }
@@ -698,7 +730,7 @@
           loader.style.display = 'none';
 
           let allMedia = [...imageResources, ...videoResources];
-          
+
           // Sort newest to oldest
           allMedia.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
@@ -872,4 +904,5 @@
     }
   </script>
 </body>
+
 </html>
