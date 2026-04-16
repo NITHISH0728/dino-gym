@@ -124,7 +124,7 @@
         <span class="dot"></span>
         Premium Fitness Destination
       </div>
-      <h1>DR DINO FITNESS &amp; GYM: The Ultimate Fitness Destination in Chengalpattu</h1>
+      <h1 class="seo-hidden">DR DINO FITNESS &amp; GYM: The Ultimate Fitness Destination in Chengalpattu</h1>
       <p class="hero-tagline" style="font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3.5vw,2.8rem); font-weight:700; color:#fff; margin-bottom:8px;">No Pain<br><span class="highlight">No Gain</span><br>Build Your Reign.</p>
       <p>Where champions are sculpted and legends are born. Experience world-class training in a premium environment
         designed for peak performance.</p>
@@ -152,7 +152,8 @@
 
       <div class="about-content reveal">
         <div class="section-tag">★ Visionary Leader</div>
-        <h2 class="section-title">Premium Fitness Facilities in Chengalpattu</h2>
+        <h2 class="seo-hidden">Premium Fitness Facilities in Chengalpattu</h2>
+        <div class="section-title" aria-hidden="true">The Visionary</div>
         <div class="about-role">Founder & Head Coach</div>
         <p class="about-text">
           A dedicated fitness professional with a vision to revolutionize the training experience. With over a decade of
@@ -169,7 +170,8 @@
     <div class="about-grid flipped">
       <div class="about-content reveal">
         <div class="section-tag">★ The Specialist</div>
-        <h2 class="section-title">Transform Your Body at the Best Gym near Periya Natham</h2>
+        <h2 class="seo-hidden">Transform Your Body at the Best Gym near Periya Natham</h2>
+        <div class="section-title" aria-hidden="true">The Strategist</div>
         <div class="about-role">Founder & Strategic Lead</div>
         <p class="about-text">
           Driving the strategic growth and excellence of DR DINO. His commitment to providing a world-class environment
@@ -323,7 +325,8 @@
   <section class="section reviews" id="reviews">
     <div class="reveal" style="text-align:center; margin-bottom:48px;">
       <div class="section-tag">💬 Google Reviews</div>
-      <h2 class="section-title">Join the DR DINO Family in Chengalpattu</h2>
+      <h2 class="seo-hidden">Join the DR DINO Family in Chengalpattu</h2>
+      <div class="section-title" aria-hidden="true">Join The Family</div>
       <a href="https://www.google.com/search?q=chengelpattu+dr+dino+gym&oq=chengelpattu+dr+dino+gym&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIICAEQABgWGB4yCggCEAAYgAQYogQyCggDEAAYgAQYogQyCggEEAAYgAQYogTSAQg3NjA0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x3a52fd6b894c5171:0xde3f69f3b4abe837,3,,,,"
         target="_blank" class="rate-us-btn">⭐ Rate Us on Google</a>
       <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">
@@ -333,12 +336,12 @@
     </div>
     <div class="reviews-slideshow" id="reviewsSlideshow">
       <div class="reviews-track" id="reviewsTrack">
-        <div class="review-image-card"><img src="images/r1.jpeg" alt="5-star Google review for DR DINO FITNESS Gym Chengalpattu from a satisfied member"></div>
-        <div class="review-image-card"><img src="images/r2.jpeg" alt="Member testimonial praising DR DINO as the best gym near Periya Natham"></div>
-        <div class="review-image-card"><img src="images/r3.jpeg" alt="Positive review for DR DINO unisex gym Chengalpattu training programs"></div>
-        <div class="review-image-card"><img src="images/r4.jpeg" alt="Google review highlighting premium equipment at DR DINO FITNESS Chengalpattu"></div>
-        <div class="review-image-card"><img src="images/r5.jpeg" alt="Member transformation success story at DR DINO Gym Chengalpattu"></div>
-        <div class="review-image-card"><img src="images/r6.jpeg" alt="Five-star rated DR DINO FITNESS gym review from Chengalpattu member"></div>
+        <div class="review-image-card"><img src="images/r1.png" alt="5-star Google review for DR DINO FITNESS Gym Chengalpattu from a satisfied member"></div>
+        <div class="review-image-card"><img src="images/r2.png" alt="Member testimonial praising DR DINO as the best gym near Periya Natham"></div>
+        <div class="review-image-card"><img src="images/r3.png" alt="Positive review for DR DINO unisex gym Chengalpattu training programs"></div>
+        <div class="review-image-card"><img src="images/r4.png" alt="Google review highlighting premium equipment at DR DINO FITNESS Chengalpattu"></div>
+        <div class="review-image-card"><img src="images/r5.png" alt="Member transformation success story at DR DINO Gym Chengalpattu"></div>
+        <div class="review-image-card"><img src="images/r6.png" alt="Five-star rated DR DINO FITNESS gym review from Chengalpattu member"></div>
       </div>
       <button class="review-nav prev" id="reviewPrev" aria-label="Previous review">‹</button>
       <button class="review-nav next" id="reviewNext" aria-label="Next review">›</button>
@@ -370,10 +373,8 @@
 
       function goTo(index) {
         current = (index + total) % total;
-        // Use the container width (70vw) for translation
-        const slideshow = document.getElementById('reviewsSlideshow');
-        const slideWidth = slideshow.offsetWidth;
-        track.style.transform = `translateX(-${current * slideWidth}px)`;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        
         // Update dots
         document.querySelectorAll('.review-dot').forEach((d, i) => {
           d.classList.toggle('active', i === current);
@@ -420,8 +421,8 @@
           <div class="ci-icon">📍</div>
           <div>
             <div class="ci-label">Visit Us</div>
-            <div class="ci-value"><a href="https://www.google.com/maps/dir/?api=1&destination=12.6819,79.9888" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Second Floor, UKC Hall, No.49, Kanchipuram High Rd, Next to SRK Cinemas, Opp. to Hosur Amman Temple,
-              Periya Natham, Natham, Chengalpattu - 603002, Tamil Nadu</a></div>
+            <div class="ci-value"><a href="https://www.google.com/maps/dir/?api=1&destination=12.6819,79.9888" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;"><span class="seo-hidden">Second Floor, UKC Hall, No.49, Kanchipuram High Rd, Next to SRK Cinemas, Opp. to Hosur Amman Temple,
+              Periya Natham, Natham, Chengalpattu - 603002, Tamil Nadu</span><span aria-hidden="true">Periya Natham, Chengalpattu</span></a></div>
           </div>
         </div>
         <div class="contact-info-card">

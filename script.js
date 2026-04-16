@@ -173,12 +173,8 @@ function animateCounters() {
 }
 
 // ===== REVIEWS INFINITE SCROLL =====
-const reviewsTrack = document.getElementById('reviewsTrack');
-if (reviewsTrack) {
-  // Duplicate cards for seamless infinite scroll
-  const cards = reviewsTrack.innerHTML;
-  reviewsTrack.innerHTML = cards + cards;
-}
+// Removed innerHTML duplication to avoid breaking inline script references
+
 
 // ===== SMOOTH SCROLL FOR NAV LINKS =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

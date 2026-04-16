@@ -3,6 +3,6 @@
 
 User-agent: *
 Allow: /
-
+Disallow: /admin.html
 # Sitemap location
-Sitemap: https://your-netlify-url.netlify.app/sitemap.xml
+Sitemap: https://dr-dino-gym.netlify.app/sitemap.xml
