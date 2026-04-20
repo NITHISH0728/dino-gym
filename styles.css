@@ -1512,7 +1512,7 @@ body {
   border: 2px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--radius-sm);
   font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: all 0.3s;
   background: #ffffff;
   color: #000000;
@@ -1696,6 +1696,24 @@ body {
     padding: 12px 30px;
   }
 
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .logo-text {
+    font-size: 1.4rem;
+  }
+
+  .logo-img {
+    width: 72px;
+    height: 40px;
+  }
+
   .section {
     padding: 70px 30px;
   }
@@ -1768,15 +1786,6 @@ body {
 
   .navbar.scrolled {
     padding: 10px 20px;
-  }
-
-  .nav-links,
-  .nav-cta {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
   }
 
   .logo-text {
@@ -1958,6 +1967,24 @@ body {
 
   .reviews-slideshow {
     width: 95%;
+  }
+
+  .review-image-card {
+    height: 220px; /* Reduces massive whitespace gaps on small screens */
+  }
+
+  .review-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .review-nav.prev {
+    left: 8px;
+  }
+
+  .review-nav.next {
+    right: 8px;
   }
 
   .rate-us-btn {
